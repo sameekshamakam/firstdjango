@@ -25,7 +25,7 @@ SECRET_KEY = 'lx6k^ndb^fzyzu3@2z_^7$y7m9!f5fx4c%54$m5e+^3jr_3l*2'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dry-journey-14238.herokuapp.com']
 
 
 # Application definition
@@ -81,6 +81,11 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] =500
 
 #DATABASES = {
 #   'default': {
