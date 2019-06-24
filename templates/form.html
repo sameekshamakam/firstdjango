@@ -1,0 +1,37 @@
+{% extends 'base\layout.html' %}
+
+{% block content %}
+
+    <h3>
+        {{ head }}
+    </h3>
+    {% if msg %}
+    <p>
+        {{msg}}
+    </p>
+
+    {% endif %}
+        <div class="container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col">
+                    {% if forms %}
+                        <form action="" method="POST">
+                            {% csrf_token %}
+                            {% for field in forms %}
+                                <div class='forms-group'>
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+                            <input type='submit' value="submit" class='btn btn-outline-primary'>
+                        </form>
+                    {% else %}
+                        <p class='text-danger'>No form available</p>
+                    {% endif %}
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+
+{% endblock %}
